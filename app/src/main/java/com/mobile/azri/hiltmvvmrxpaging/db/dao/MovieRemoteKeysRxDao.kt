@@ -1,11 +1,10 @@
-package com.mobile.azri.androidpaging3usingrxjava.db.dao
+package com.mobile.azri.hiltmvvmrxpaging.db.dao
 
-import androidx.paging.PagingSource
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.mobile.azri.androidpaging3usingrxjava.model.Movies
+import com.mobile.azri.hiltmvvmrxpaging.model.Movies
 
 @Dao
 interface MovieRemoteKeysRxDao {

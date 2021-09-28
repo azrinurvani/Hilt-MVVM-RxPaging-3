@@ -2,7 +2,9 @@ package com.mobile.azri.hiltmvvmrxpaging.di
 
 import android.app.Application
 import android.util.Log
+import com.mobile.azri.hiltmvvmrxpaging.R
 import com.mobile.azri.hiltmvvmrxpaging.db.MovieDatabase
+import com.mobile.azri.hiltmvvmrxpaging.model.MoviesMapper
 import com.mobile.azri.hiltmvvmrxpaging.util.Constants
 import dagger.Module
 import dagger.Provides
@@ -65,5 +67,17 @@ object AppModule {
     @Provides
     fun provideLocale() : Locale{
         return Locale.getDefault()
+    }
+
+    @Singleton
+    @Provides
+    fun provideApiKey(@ApplicationContext context: Application) : String{
+        return context.getString(R.string.api_key)
+    }
+
+    @Singleton
+    @Provides
+    fun provideMoviesMapper() : MoviesMapper{
+        return MoviesMapper()
     }
 }

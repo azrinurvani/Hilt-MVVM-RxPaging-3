@@ -1,4 +1,4 @@
-package com.mobile.azri.androidpaging3usingrxjava.model
+package com.mobile.azri.hiltmvvmrxpaging.model
 
 import com.google.gson.annotations.SerializedName
 

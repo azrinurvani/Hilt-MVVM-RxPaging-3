@@ -1,11 +1,11 @@
-package com.mobile.azri.androidpaging3usingrxjava.db.dao
+package com.mobile.azri.hiltmvvmrxpaging.db.dao
 
 import androidx.paging.PagingSource
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.mobile.azri.androidpaging3usingrxjava.model.Movies
+import com.mobile.azri.hiltmvvmrxpaging.model.Movies
 
 @Dao
 interface MovieRxDao {
@@ -14,7 +14,7 @@ interface MovieRxDao {
     fun insertAll(movies: List<Movies.Movie>)
 
     @Query("SELECT * FROM movies ORDER BY id ASC")
-    fun selectAll():PagingSource<Int,Movies.Movie>
+    fun selectAll() : PagingSource<Int, Movies.Movie>
 
     @Query("DELETE FROM movies")
     fun clearMovies()

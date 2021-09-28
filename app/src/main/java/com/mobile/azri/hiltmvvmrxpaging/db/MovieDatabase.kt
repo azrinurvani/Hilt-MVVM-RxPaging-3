@@ -5,9 +5,9 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.mobile.azri.androidpaging3usingrxjava.db.dao.MovieRemoteKeysRxDao
-import com.mobile.azri.androidpaging3usingrxjava.db.dao.MovieRxDao
-import com.mobile.azri.androidpaging3usingrxjava.model.Movies
+import com.mobile.azri.hiltmvvmrxpaging.db.dao.MovieRemoteKeysRxDao
+import com.mobile.azri.hiltmvvmrxpaging.db.dao.MovieRxDao
+import com.mobile.azri.hiltmvvmrxpaging.model.Movies
 import com.mobile.azri.hiltmvvmrxpaging.util.Converters
 
 @Database(
