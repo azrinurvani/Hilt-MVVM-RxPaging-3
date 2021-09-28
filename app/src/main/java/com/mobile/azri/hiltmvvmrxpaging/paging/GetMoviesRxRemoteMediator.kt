@@ -127,6 +127,6 @@ class GetMoviesRxRemoteMediator @Inject constructor(
     }
 
     companion object{
-        const val INVALID_PAGE = 1
+        const val INVALID_PAGE = -1
     }
 }
