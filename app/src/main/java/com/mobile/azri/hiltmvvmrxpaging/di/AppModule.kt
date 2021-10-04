@@ -1,10 +1,9 @@
 package com.mobile.azri.hiltmvvmrxpaging.di
 
-import android.app.Application
+import android.content.Context
 import android.util.Log
 import com.mobile.azri.hiltmvvmrxpaging.R
 import com.mobile.azri.hiltmvvmrxpaging.db.MovieDatabase
-import com.mobile.azri.hiltmvvmrxpaging.model.MoviesMapper
 import com.mobile.azri.hiltmvvmrxpaging.util.Constants
 import dagger.Module
 import dagger.Provides
@@ -16,7 +15,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.*
+import java.util.Locale
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
@@ -59,8 +58,8 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideDatabaseBuilder(@ApplicationContext application: Application) : MovieDatabase {
-        return MovieDatabase.getInstance(application)
+    fun provideDatabaseBuilder(@ApplicationContext context: Context) : MovieDatabase {
+        return MovieDatabase.getInstance(context)
     }
 
     @Singleton
@@ -71,13 +70,9 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideApiKey(@ApplicationContext context: Application) : String{
+    fun provideApiKey(@ApplicationContext context: Context) : String{
         return context.getString(R.string.api_key)
     }
 
-    @Singleton
-    @Provides
-    fun provideMoviesMapper() : MoviesMapper{
-        return MoviesMapper()
-    }
+
 }
