@@ -1,6 +1,7 @@
 package com.mobile.azri.hiltmvvmrxpaging.ui.adapter
 
 import android.annotation.SuppressLint
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
@@ -10,11 +11,20 @@ import com.bumptech.glide.Glide
 import com.mobile.azri.hiltmvvmrxpaging.R
 import com.mobile.azri.hiltmvvmrxpaging.databinding.MovieGridItemBinding
 import com.mobile.azri.hiltmvvmrxpaging.model.Movies
+import dagger.hilt.android.scopes.ActivityScoped
+import javax.inject.Inject
 
-class MoviesRxAdapter : PagingDataAdapter<Movies.Movie,MoviesRxAdapter.MovieRxViewHolder>(COMPARATOR) {
+@ActivityScoped
+class MoviesRxAdapter @Inject constructor() : PagingDataAdapter<Movies.Movie,MoviesRxAdapter.MovieRxViewHolder>(COMPARATOR) {
+
+//    private lateinit var bindingRow : MovieGridItemBinding
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieRxViewHolder {
+//        bindingRow = MovieGridItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return MovieRxViewHolder.create(parent)
+
+        //cara 2 untuk create viewHolder
+//        return MovieRxViewHolder(bindingRow)
     }
 
     override fun onBindViewHolder(holder: MovieRxViewHolder, position: Int) {
@@ -31,6 +41,10 @@ class MoviesRxAdapter : PagingDataAdapter<Movies.Movie,MoviesRxAdapter.MovieRxVi
                 .placeholder(R.drawable.ic_launcher_background)
                 .error(R.drawable.ic_launcher_foreground)
                 .into(binding.poster)
+
+            binding.tvTitle.text = data.title
+            binding.tvReleaseDate.text = data.releaseDate.toString()
+            Log.d(TAG, "bind: title -> ${data.title} ")
         }
 
         companion object{
@@ -55,5 +69,6 @@ class MoviesRxAdapter : PagingDataAdapter<Movies.Movie,MoviesRxAdapter.MovieRxVi
            }
 
        }
+       private const val TAG = "MoviesRxAdapter"
    }
 }
